@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: engine-bolt-mesh
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://100.77.183.32:30432/bolt_mesh}
+    username: ${DB_USER:bolt}
+    password: ${DB_PASSWORD:GbgEoAgKpccWyzCkeWdL5YRI}
+  jpa:
+    hibernate:
+      ddl-auto: update
