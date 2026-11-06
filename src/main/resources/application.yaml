@@ -1,6 +1,10 @@
 spring:
   application:
     name: engine-bolt-mesh
+
+server:
+  port: 8080
+
   datasource:
     url: ${DB_URL:jdbc:postgresql://100.77.183.32:30432/bolt_mesh}
     username: ${DB_USER:bolt}

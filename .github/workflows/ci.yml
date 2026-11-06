@@ -1,0 +1,14 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  call-java-template:
+    uses: kube-automations-v1/shared-pipelines/.github/workflows/java-template.yml@main
+    permissions:
+      contents: read
+      packages: write
+    secrets:
+      GITOPS_PAT: ${{ secrets.GITOPS_PAT }}
