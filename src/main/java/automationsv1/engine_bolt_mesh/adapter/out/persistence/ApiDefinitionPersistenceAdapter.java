@@ -7,6 +7,7 @@ import automationsv1.engine_bolt_mesh.application.ports.out.ApiDefinitionOutputP
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -24,6 +25,21 @@ public class ApiDefinitionPersistenceAdapter implements ApiDefinitionOutputPort 
     @Override
     public Optional<ApiDefinition> findById(UUID id) {
         return repository.findById(id).map(ApiDefinitionEntity::toDomain);
+    }
+
+    @Override
+    public List<ApiDefinition> findAll() {
+        return repository.findAll().stream().map(ApiDefinitionEntity::toDomain).toList();
+    }
+
+    @Override
+    public boolean existsById(UUID id) {
+        return repository.existsById(id);
+    }
+
+    @Override
+    public void deleteById(UUID id) {
+        repository.deleteById(id);
     }
 
 }

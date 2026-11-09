@@ -7,6 +7,7 @@ import automationsv1.engine_bolt_mesh.application.ports.out.WorkflowDefinitionOu
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -24,6 +25,21 @@ public class WorkflowDefinitionPersistenceAdapter implements WorkflowDefinitionO
     @Override
     public Optional<WorkflowDefinition> findById(UUID id) {
         return repository.findById(id).map(WorkflowDefinitionEntity::toDomain);
+    }
+
+    @Override
+    public List<WorkflowDefinition> findAll() {
+        return repository.findAll().stream().map(WorkflowDefinitionEntity::toDomain).toList();
+    }
+
+    @Override
+    public boolean existsById(UUID id) {
+        return repository.existsById(id);
+    }
+
+    @Override
+    public void deleteById(UUID id) {
+        repository.deleteById(id);
     }
 
 }
